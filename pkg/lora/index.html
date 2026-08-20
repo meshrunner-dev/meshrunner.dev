@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+  Vanity import page for the meshrunner.dev/pkg/lora module.
+
+  Served at https://meshrunner.dev/pkg/lora by this repo's layout
+  (pkg/lora/index.html). One page at the module root is enough: to
+  resolve any package inside the module (say meshrunner.dev/pkg/lora/wire),
+  the go tool queries the path prefixes and accepts the go-import tag
+  found here. A new page is only needed per additional MODULE
+  (e.g. pkg/radio/index.html for a future meshrunner.dev/pkg/radio).
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="go-import" content="meshrunner.dev/pkg/lora git https://github.com/meshrunner-dev/lora-go">
+    <meta name="go-source" content="meshrunner.dev/pkg/lora https://github.com/meshrunner-dev/lora-go https://github.com/meshrunner-dev/lora-go/tree/main{/dir} https://github.com/meshrunner-dev/lora-go/blob/main{/dir}/{file}#L{line}">
+    <meta http-equiv="refresh" content="0; url=https://pkg.go.dev/meshrunner.dev/pkg/lora">
+    <title>meshrunner.dev/pkg/lora</title>
+  </head>
+  <body>
+    Redirecting to <a href="https://pkg.go.dev/meshrunner.dev/pkg/lora">pkg.go.dev/meshrunner.dev/pkg/lora</a>…
+  </body>
+</html>
