@@ -10,15 +10,15 @@ infrastructure, not just a website. Anyone importing
 | Path | Serves |
 |---|---|
 | `index.html` | landing page |
-| `meshcore/index.html` | vanity import page for the `meshrunner.dev/meshcore` module |
+| `pkg/meshcore/index.html` | vanity import page for the `meshrunner.dev/pkg/meshcore` module |
 | `404.html` | fallback |
 | `CNAME` | custom-domain binding for GitHub Pages |
 | `.nojekyll` | disables Jekyll processing (plain static files) |
 
 **Vanity rule**: one page per Go *module*, served at the module root.
 Packages inside a module need nothing extra — the go tool resolves path
-prefixes. A future `meshrunner.dev/radio` module means adding
-`radio/index.html`, and nothing else.
+prefixes. Modules live under `pkg/`; a future `meshrunner.dev/pkg/radio` module
+means adding `pkg/radio/index.html`, and nothing else.
 
 ## Publishing (GitHub settings, one-time)
 
@@ -47,13 +47,13 @@ prefixes. A future `meshrunner.dev/radio` module means adding
 ## Checking the vanity path once live
 
 ```sh
-# -L matters: Pages 301-redirects /meshcore to /meshcore/
-curl -sL 'https://meshrunner.dev/meshcore?go-get=1' | grep go-import
+# -L matters: Pages 301-redirects /pkg/meshcore to /pkg/meshcore/
+curl -sL 'https://meshrunner.dev/pkg/meshcore?go-get=1' | grep go-import
 
 # go refuses to `go get` the module from inside its own checkout
 # ("is in the main module") — probe from a scratch module instead:
 cd "$(mktemp -d)" && go mod init probe >/dev/null
-GOPROXY=direct GOSUMDB=off go get meshrunner.dev/meshcore@main
+GOPROXY=direct GOSUMDB=off go get meshrunner.dev/pkg/meshcore@main
 ```
 
 Enforcing HTTPS once the certificate is issued, without the UI:
