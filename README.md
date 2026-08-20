@@ -3,7 +3,7 @@
 Source of <https://meshrunner.dev>, served by GitHub Pages: the project
 landing page and the **Go vanity import pages** — this repo is build
 infrastructure, not just a website. Anyone importing
-`meshrunner.dev/meshcore` depends on the pages published here.
+`meshrunner.dev/pkg/meshcore` depends on the pages published here.
 
 ## Layout
 
