@@ -47,6 +47,17 @@ prefixes. A future `meshrunner.dev/radio` module means adding
 ## Checking the vanity path once live
 
 ```sh
-curl -s 'https://meshrunner.dev/meshcore?go-get=1' | grep go-import
-GOPROXY=direct go get meshrunner.dev/meshcore@main
+# -L matters: Pages 301-redirects /meshcore to /meshcore/
+curl -sL 'https://meshrunner.dev/meshcore?go-get=1' | grep go-import
+
+# go refuses to `go get` the module from inside its own checkout
+# ("is in the main module") — probe from a scratch module instead:
+cd "$(mktemp -d)" && go mod init probe >/dev/null
+GOPROXY=direct GOSUMDB=off go get meshrunner.dev/meshcore@main
+```
+
+Enforcing HTTPS once the certificate is issued, without the UI:
+
+```sh
+gh api -X PUT repos/meshrunner-dev/meshrunner.dev/pages -F https_enforced=true
 ```
